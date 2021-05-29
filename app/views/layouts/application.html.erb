@@ -47,7 +47,9 @@
 </nav>
 
 <%= link_to "Privacy Policy", privacy_policy_path  %>
-
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+    <%= current_user.id %>
     <%= yield %>
   </body>
 </html>
