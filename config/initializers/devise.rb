@@ -277,7 +277,8 @@ Devise.setup do |config|
   config.omniauth :google_oauth2,
    '199674420394-v69lt5mf39mustefailpb1c89r48k9sk.apps.googleusercontent.com',
    'T8b85hsYbYCyQvpSkc_9XTCA'
-    
+  
+   config.omniauth :twitter, 'Uuc99WxaayGxlnYoBBZVwdMms', 'wsedvfnBjRqlvJe8Y40OogMbcEpyDlZIW7W5KbOlpLdp8XEAKU'
 
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or
