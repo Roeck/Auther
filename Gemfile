@@ -20,7 +20,7 @@ gem 'devise', github: "heartcombo/devise", branch: "master"
 gem 'omniauth-google-oauth2', '~> 1.0'
 gem 'omniauth-rails_csrf_protection'
 
-
+gem 'omniauth-github'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
