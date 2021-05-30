@@ -30,13 +30,25 @@
     <%= f.submit "Sign In", :class => "btn btn-primary" %>
   </div>
 
-<% end %>
+  <% end %>
 
-</div>
+  </div>
+
+  <div class="card-footer">
+      <%- if devise_mapping.omniauthable? %>
+          <%- resource_class.omniauth_providers.each do |provider| %>
+      <%= link_to "Sign in with #{OmniAuth::Utils.camelize(provider)}", omniauth_authorize_path(resource_name, provider), method: :post, :class => "btn btn-dark" %><br />
+      <% end %>
+    <% end %>
+  </div>
+
   <div class="card-footer">
       <%= link_to "Sign Up",  new_user_registration_path, :class => "btn btn-secondary" %>
       <%= link_to "Forgot password?",  new_user_password_path, :class => "btn btn-secondary" %>
   </div>
+  
 </div>
+
+
 
 
