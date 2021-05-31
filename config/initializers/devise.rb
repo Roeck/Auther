@@ -278,7 +278,7 @@ Devise.setup do |config|
    '199674420394-v69lt5mf39mustefailpb1c89r48k9sk.apps.googleusercontent.com',
    'T8b85hsYbYCyQvpSkc_9XTCA'
   
-  config.omniauth :twitter, 'Uuc99WxaayGxlnYoBBZVwdMms', 'wsedvfnBjRqlvJe8Y40OogMbcEpyDlZIW7W5KbOlpLdp8XEAKU'
+  config.omniauth :twitter, 'okpKZj7pC8FMNbSp0jQ34Hcpb', 'jCMvilu7pPB2um5iDfBIfgkfFWxo1PDXSZi7jH02w4tquDjAuw'
 
   config.omniauth :facebook, '2920826191570223', '9b30b69a7d37754e9189a86c08e2e0ef'
 
