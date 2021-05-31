@@ -26,6 +26,11 @@ class User < ApplicationRecord
       user
     end
 
+    # Assign a default role callback as 'student':
+    after_create do   
+        self.update(student: true)
+    end
+
     def to_s
         email 
     end
