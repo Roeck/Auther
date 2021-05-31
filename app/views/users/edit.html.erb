@@ -1,3 +1,6 @@
+<h1>Edit role for <%= @user.email %></h1>
+<br /><br />
+
 <%= form_for(@user) do |f| %>
 
   <% if @user.errors.any? %>
@@ -24,6 +27,8 @@
     <br>
   <% end %>
 
-  <%= f.button :submit %>
+  <%= f.button :Submit, :class => "btn btn-primary" %>
+
+  <%= link_to "Cancel", user_path(@user), :class => "btn btn-secondary" %>
 
 <% end %>

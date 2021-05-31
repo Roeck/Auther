@@ -52,8 +52,12 @@
 <% end %>
 <br /><br />
 
+<b><%= 'roles'.humanize %>:</b>
+<%= user.active_roles.join(", ") %>
+<br /><br />
+
 <!-- EDIT ROLES -->
-<%= link_to "Edit roles", edit_user_path(user) %>
+<%= link_to "Edit role", edit_user_path(user), :class => "btn btn-secondary" %>
 
 <!-- BAN USER -->
 <%= link_to ban_status(user), ban_user_path(user), method: :patch, :class => "btn btn-danger" %>
