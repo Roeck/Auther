@@ -14,6 +14,15 @@ class UsersController < ApplicationController
         @user = User.find(params[:id])
     end
 
+    def update
+        @user = User.find(params[:id])
+        @user.update(user_params)
+        if @user.update(user_params)
+            redirect_to @user, notice: "User was successfully updated."
+        else
+            render :edit
+        end
+    end
     
     # BAN USERS
     def ban  
@@ -31,6 +40,14 @@ class UsersController < ApplicationController
         @user = User.find(params[:id])
         @user.destroy
         redirect_to users_path, notice: "User was successfully deleted."
+    end
+
+    # Allow user to change roles:
+
+    private
+
+    def user_params
+        params.require(:user).permit(*User::ROLES)
     end
 
 end
