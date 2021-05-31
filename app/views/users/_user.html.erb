@@ -56,13 +56,16 @@
 <%= user.active_roles.join(", ") %>
 <br /><br />
 
-<!-- EDIT ROLES -->
-<%= link_to "Edit Role", edit_user_path(user), :class => "btn btn-secondary" %>
+<!-- ADMIN EXCLUSIVITIES -->
+<% if current_user.admin? %>
+    <!-- EDIT ROLES -->
+    <%= link_to "Edit Role", edit_user_path(user), :class => "btn btn-secondary" %>
 
-<!-- BAN USER -->
-<%= link_to ban_status(user), ban_user_path(user), method: :patch, :class => "btn btn-danger" %>
-<br /><br />
+    <!-- BAN USER -->
+    <%= link_to ban_status(user), ban_user_path(user), method: :patch, :class => "btn btn-danger" %>
+    <br /><br />
 
-<!-- DELETE USER -->
-<%= link_to "Delete", user, method: :delete, data: {confirm: "Are you sure?"}, :class => "btn btn-danger" %>
-<br />
+    <!-- DELETE USER -->
+    <%= link_to "Delete", user, method: :delete, data: {confirm: "Are you sure?"}, :class => "btn btn-danger" %>
+    <br />
+<% end %>

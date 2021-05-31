@@ -1,5 +1,8 @@
 class UsersController < ApplicationController
 
+    # Admin user exclusive actions:
+    before_action :require_admin, only: [:edit, :update, :ban, :destroy]
+
     # DISPLAY USERS
     def index
         @users = User.all.order(created_at: :asc)
@@ -42,12 +45,18 @@ class UsersController < ApplicationController
         redirect_to users_path, notice: "User was successfully deleted."
     end
 
-    # Allow user to change roles:
-
     private
 
     def user_params
+        # Allow user to change roles:
         params.require(:user).permit(*User::ROLES)
+    end
+
+    def require_admin
+        # Admin method for exclusive actions:
+        unless current_user.admin? 
+            redirect_to root_path, alert: "You are not authorized for this action"
+        end
     end
 
 end
