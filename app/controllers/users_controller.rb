@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
 
+    # DISPLAY USERS
     def index
         @users = User.all.order(created_at: :asc)
     end
@@ -8,6 +9,13 @@ class UsersController < ApplicationController
         @user = User.find(params[:id])
     end
 
+    # EDIT ROLES
+    def edit 
+        @user = User.find(params[:id])
+    end
+
+    
+    # BAN USERS
     def ban  
         @user = User.find(params[:id])
         if @user.access_locked?
@@ -18,6 +26,7 @@ class UsersController < ApplicationController
         redirect_to @user, notice: "User access locked: #{@user.access_locked?}"
     end
 
+    # DELETE USERS
     def destroy
         @user = User.find(params[:id])
         @user.destroy

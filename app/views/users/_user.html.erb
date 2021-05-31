@@ -52,6 +52,9 @@
 <% end %>
 <br /><br />
 
+<!-- EDIT ROLES -->
+<%= link_to "Edit roles", edit_user_path(user) %>
+
 <!-- BAN USER -->
 <%= link_to ban_status(user), ban_user_path(user), method: :patch, :class => "btn btn-danger" %>
 <br /><br />
