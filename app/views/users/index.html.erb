@@ -11,14 +11,16 @@
         <th>Name</th>
         <th>Image</th>
         <th>Role(s)</th>
-        <th colspan="3"></th>
+        <th>Created by Invite?</th>
+        <th>Invitation Accepted?</th>
+        <th colspan="3">Admin Actions</th>
     </tr>
     </thead>
     
     <tbody>
         <% @users.each do |user| %>
             <tr>
-                <td><%= link_to user.id, user_path(user), :class => "btn btn-sm btn-outline-secondary" %>
+                <td><%= link_to user.id, user_path(user), :class => "btn btn-sm btn-outline-secondary" %></td>
                 <td><%= user %></td>
                 <td><%= boolean_label(user.confirmed?) %></td>
                 <td><%= boolean_label(user.access_locked?) %></td>
@@ -29,19 +31,20 @@
                     <% end %>
                 </td>
                 <td><%= user.active_roles.join(", ") %></td>
+                <td><%= boolean_label(user.created_by_invite?) %></td>
+                <td><%= boolean_label(user.invitation_accepted?) %></td>
                 <td>
-                <% if current_user.admin? %>
+                    <% if current_user.admin? %>
                     <!-- EDIT ROLES -->
                     <%= link_to "Edit Role", edit_user_path(user), :class => "btn btn-sm btn-outline-secondary" %>
 
                     <!-- BAN USER -->
                     <%= link_to ban_status(user), ban_user_path(user), method: :patch, :class => "btn btn-sm btn-outline-danger" %>
-                    <br /><br />
+                    <br />
 
                     <!-- DELETE USER -->
                     <%= link_to "Delete", user, method: :delete, data: {confirm: "Are you sure?"}, :class => "btn btn-sm btn-outline-danger" %>
-                    <br />
-                <% end %>
+                    <% end %>
                 </td>
             </tr>
         <% end %>
