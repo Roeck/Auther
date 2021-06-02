@@ -1,6 +1,6 @@
 <div class="txt-shine">
   <div class="big-text">
-    Edit role for <%= @user.email %>
+    Edit <%= @user.email %>
   </div>
 </div>
 <br />
@@ -23,6 +23,15 @@
     </div>
     <% end %>
 
+  <!-- EDIT USERNAME -->
+  <%= f.label :name, "Name:" %>
+  <br />
+  <%= f.text_field :name %>
+  <br /><br />
+
+  <!-- EDIT ROLE -->
+  Role:
+  <br />
   <% User::ROLES.each do |role| %>
     <label>
       <%= f.check_box role %>

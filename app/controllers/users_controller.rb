@@ -75,7 +75,7 @@ class UsersController < ApplicationController
   def user_params
     list_allowed_params = []
     list_allowed_params += [:name] if current_user == @user || current_user.admin?
-    list_allowed_params += [*User::ROLES] if current_user.admin?
+    list_allowed_params += [*User::ROLES, :name] if current_user.admin?
     params.require(:user).permit(list_allowed_params)
     # params.require(:user).permit(*User::ROLES, :name)
   end

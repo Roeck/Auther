@@ -4,7 +4,6 @@ class User < ApplicationRecord
          :confirmable, :trackable, :lockable, :invitable,
          :omniauthable, omniauth_providers: [:google_oauth2, :github, :twitter, :facebook]
 
-
     include Roleable
 
     def self.from_omniauth(access_token)
@@ -19,7 +18,9 @@ class User < ApplicationRecord
 
         user.provider = access_token.provider
         user.uid = access_token.uid
-        user.name = access_token.info.name
+        unless user.name.present?
+            user.name = access_token.info.name
+        end
         user.image = access_token.info.image
         user.save
         user.confirmed_at = Time.now
