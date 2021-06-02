@@ -1,7 +1,7 @@
 class User < ApplicationRecord
   devise :invitable, :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
-         :confirmable, :trackable, :lockable,
+         :confirmable, :trackable, :lockable, :invitable,
          :omniauthable, omniauth_providers: [:google_oauth2, :github, :twitter, :facebook]
 
 

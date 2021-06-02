@@ -8,12 +8,13 @@
         <%= link_to root_path, class: "nav-link #{'active font-weight-bold' if current_page?(root_path)}" do %>
           <%= image_tag ("/logo.png"), class: "logo" %>
         <% end %>
-
         <%= link_to users_path, class: "nav-link #{'active font-weight-bold' if current_page?(users_path)}" do %>
-          <div class="fa fa-users" style="padding: 10px;"></div>
+          <div class="fa fa-users" style="padding-top: 16px;"></div>
           Users
         <% end %>
-
+        <div style="padding-top: 12.1px;">
+            <%= link_to "Invite User", new_user_invitation_path, class: "nav-link #{'active font-weight-bold' if current_page?(new_user_invitation_path)}" %>
+        </div>
       </ul>
       <ul class="navbar-nav ms-auto">
         <% if current_user %>

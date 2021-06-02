@@ -4,7 +4,7 @@ module ApplicationHelper
             when true
                 content_tag(:span, value, class: "badge bg-success")
             when false 
-                content_tag(:span, value, class: "badge bg-warning text-dark")
+                content_tag(:span, value, class: "badge bg-warning")
             value
         end
     end
