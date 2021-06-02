@@ -1,7 +1,8 @@
+<div class="txt-shine"><h1 class="big-text">All Users (<%= @users.size %>)</h1></div>
+<br /><br />
 <div class="table-responsive">
     <table class="table table-dark table-striped table-hover">
     <thead>
-    <th class="h1" style="color: grey; text-align: center;">All Users (<%= @users.size %>)</th>
     <tr>
         <th>ID:</th>
         <th>Email:</th>
@@ -15,13 +16,12 @@
     </thead>
     
     <tbody>
-       
         <% @users.each do |user| %>
             <tr>
                 <td><%= link_to user.id, user_path(user), :class => "btn btn-sm btn-outline-secondary" %>
                 <td><%= user %></td>
-                <td><%= user.confirmed? %></td>
-                <td><%= user.access_locked? %></td>
+                <td><%= boolean_label(user.confirmed?) %></td>
+                <td><%= boolean_label(user.access_locked?) %></td>
                 <td><%= user.name %></td>
                 <td>
                     <% if user.image.present? %>

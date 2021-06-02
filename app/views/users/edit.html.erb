@@ -1,4 +1,4 @@
-<h1>Edit role for <%= @user.email %></h1>
+<div class="txt-shine">Edit role for <%= @user.email %></div>
 <br /><br />
 
 <%= form_for(@user) do |f| %>
@@ -7,7 +7,7 @@
     <div id="error_explanation">
       <h2>
         <%= pluralize(@user.errors.count, "error") %>
-        prohibited this user from being saved:
+        Prohibited this user from being saved:
       </h2>
       <ul>
         <% @user.errors.full_messages.each do |message| %>
