@@ -26,6 +26,8 @@ gem 'omniauth-twitter', '~> 1.4'
 
 gem 'omniauth-facebook'
 
+gem 'devise_invitable', '~> 2.0', '>= 2.0.5'
+
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
 end
