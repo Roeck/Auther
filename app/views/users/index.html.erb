@@ -1,53 +1,62 @@
 <div class="txt-shine"><h1 class="big-text">All Users (<%= @users.size %>)</h1></div>
-<br /><br />
+    <br />
+    <div class="text-center">
+        <%= link_to new_user_invitation_path, class: "btn btn-secondary" do %>
+        <div class="fa fa-plus"></div>
+        <div class="fa fa-user"></div>
+        Invite User
+        <% end %>
+    </div>
+    <br />
 <div class="table-responsive">
     <table class="table table-dark table-striped table-hover">
     <thead>
-    <tr>
-        <th>ID:</th>
-        <th>Email:</th>
-        <th>Confirmed?</th>
-        <th>Banned?</th>
+      <tr>
+        <th>ID</th>
+        <th>Email</th>
         <th>Name</th>
         <th>Image</th>
-        <th>Role(s)</th>
+        <th>Roles</th>
+        <th>Confirmed?</th>
+        <th>Banned?</th>
         <th>Created by Invite?</th>
         <th>Invitation Accepted?</th>
         <th colspan="3">Admin Actions</th>
-    </tr>
+      </tr>
     </thead>
-    
+  
     <tbody>
-        <% @users.each do |user| %>
-            <tr>
-                <td><%= link_to user.id, user_path(user), :class => "btn btn-sm btn-outline-secondary" %></td>
-                <td><%= user %></td>
-                <td><%= boolean_label(user.confirmed?) %></td>
-                <td><%= boolean_label(user.access_locked?) %></td>
-                <td><%= user.name %></td>
-                <td>
-                    <% if user.image.present? %>
-                        <%= image_tag user.image, size: "30x30" %>
-                    <% end %>
-                </td>
-                <td><%= user.active_roles.join(", ") %></td>
-                <td><%= boolean_label(user.created_by_invite?) %></td>
-                <td><%= boolean_label(user.invitation_accepted?) %></td>
-                <td>
-                    <% if current_user.admin? %>
-                    <!-- EDIT ROLES -->
-                    <%= link_to "Edit Role", edit_user_path(user), :class => "btn btn-sm btn-outline-secondary" %>
-
-                    <!-- BAN USER -->
-                    <%= link_to ban_status(user), ban_user_path(user), method: :patch, :class => "btn btn-sm btn-outline-danger" %>
-                    <br />
-
-                    <!-- DELETE USER -->
-                    <%= link_to "Delete", user, method: :delete, data: {confirm: "Are you sure?"}, :class => "btn btn-sm btn-outline-danger" %>
-                    <% end %>
-                </td>
-            </tr>
-        <% end %>
+      <% @users.each do |user| %>
+        <tr>
+          <td><%= link_to user.id, user_path(user), :class => "btn btn-sm btn-outline-secondary" %></td>
+          <td><%= user %></td>
+          <td><%= user.name %></td>
+          <td>
+            <% if user.image.present? %>
+              <%= image_tag user.image, size: "20x20" %>
+            <% end %>
+          </td>
+          <td><%= user.active_roles.join(", ") %></td>
+          <td><%= boolean_label(user.confirmed?) %></td>
+          <td><%= boolean_label(user.access_locked?) %></td>
+          <td><%= boolean_label(user.created_by_invite?) %></td>
+          <td><%= boolean_label(user.invitation_accepted?) %></td>
+          <td>
+            <% if user.invited_by == current_user %>
+              <% if user.created_by_invite? && user.invitation_accepted? == false && user.confirmed? == false %>
+                <%= link_to "Re-invite", resend_invitation_user_path(user), method: :patch, class: "btn btn-sm btn-secondary" %>
+              <% end %>
+            <% end %>
+              <% if user.confirmed? == false && user.created_by_invite? == false %>
+                <%= link_to "Resend Confirmation", resend_confirmation_instructions_user_path(user), method: :patch, class: "btn btn-sm btn-secondary" %>
+              <% end %>
+              <%= link_to "Edit", edit_user_path(user), class: "btn btn-sm btn-secondary" %>
+              <%= link_to ban_status(user), ban_user_path(user), method: :patch, class: "btn btn-sm btn-danger" %>
+              <%= link_to "Delete", user, method: :delete, data: {confirm: "Are you sure"}, class: "btn btn-sm btn-danger" %>
+          </td>
+        </tr>
+      <% end %>
     </tbody>
-    </table>
+  </table>
+</div>
 </div>
