@@ -1,8 +1,12 @@
-<div class="txt-shine">Edit role for <%= @user.email %></div>
-<br /><br />
+<div class="txt-shine">
+  <div class="big-text">
+    Edit role for <%= @user.email %>
+  </div>
+</div>
+<br />
 
+<div class="card text-white bg-dark", style="padding: 3%;">
 <%= form_for(@user) do |f| %>
-
   <% if @user.errors.any? %>
     <div id="error_explanation">
       <h2>
@@ -17,7 +21,7 @@
         <% end %>
       </ul>
     </div>
-  <% end %>
+    <% end %>
 
   <% User::ROLES.each do |role| %>
     <label>
@@ -26,9 +30,8 @@
     </label>
     <br>
   <% end %>
-
+  <br />
   <%= f.button :Submit, :class => "btn btn-primary" %>
-
   <%= link_to "Cancel", user_path(@user), :class => "btn btn-secondary" %>
-
-<% end %>
+ <% end %>
+</div>

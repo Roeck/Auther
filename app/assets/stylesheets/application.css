@@ -26,6 +26,12 @@ body {
     height: 40px;
 }
 
+@media screen and (max-width:768px) {
+    .logo {
+        visibility: hidden;
+    }
+}
+
 .big-text {
     font-family: 'ZCOOL QingKe HuangYou', cursive; 
     font-size: 5rem;

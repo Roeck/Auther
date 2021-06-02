@@ -1,19 +1,23 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<nav class="navbar navbar-expand-lg navbar-dark">
   <div class="container-fluid">
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto">
-        <%= link_to root_path, class: "nav-link #{'active font-weight-bold' if current_page?(root_path)}" do %>
-          <%= image_tag ("/logo.png"), class: "logo" %>
-        <% end %>
-        <%= link_to users_path, class: "nav-link #{'active font-weight-bold' if current_page?(users_path)}" do %>
-          <div class="fa fa-users" style="padding-top: 16px;"></div>
-          Users
-        <% end %>
-        <div style="padding-top: 12.1px;">
-            <%= link_to "Invite User", new_user_invitation_path, class: "nav-link #{'active font-weight-bold' if current_page?(new_user_invitation_path)}" %>
+      <%= image_tag ("/logo.png"), class: "logo" %>
+        <div style="display: inline-flex;">
+            <%= link_to root_path, class: "nav-link #{'active font-weight-bold' if current_page?(root_path)}" do %>
+            <% end %>
+            <%= link_to users_path, class: "nav-link #{'active font-weight-bold' if current_page?(users_path)}" do %>
+              <div class="fa fa-users" ></div>
+              Users
+            <% end %>
+            <%= link_to new_user_invitation_path, class: "nav-link #{'active font-weight-bold' if current_page?(new_user_invitation_path)}" do %>
+              <div class="fa fa-plus"></div>
+              <div class="fa fa-user"></div>
+              Invite User
+            <% end %>
         </div>
       </ul>
       <ul class="navbar-nav ms-auto">

@@ -40,22 +40,28 @@
           <td><%= boolean_label(user.confirmed?) %></td>
           <td><%= boolean_label(user.access_locked?) %></td>
           <td><%= boolean_label(user.created_by_invite?) %></td>
-          <td><%= boolean_label(user.invitation_accepted?) %></td>
           <td>
+              <%= boolean_label(user.invitation_accepted?) %>
+              <%= link_to "Re-invite", resend_invitation_user_path(user), method: :patch, :class => "btn btn-sm btn-outline-success", :style => "margin-left: 33px;" %>
+          <td>
+
             <% if user.invited_by == current_user %>
               <% if user.created_by_invite? && user.invitation_accepted? == false && user.confirmed? == false %>
-                <%= link_to "Re-invite", resend_invitation_user_path(user), method: :patch, class: "btn btn-sm btn-secondary" %>
+                <%= link_to "Re-invite", resend_invitation_user_path(user), method: :patch, class: "btn btn-sm btn-outline-secondary" %>
               <% end %>
             <% end %>
-              <% if user.confirmed? == false && user.created_by_invite? == false %>
-                <%= link_to "Resend Confirmation", resend_confirmation_instructions_user_path(user), method: :patch, class: "btn btn-sm btn-secondary" %>
-              <% end %>
-              <%= link_to "Edit", edit_user_path(user), class: "btn btn-sm btn-secondary" %>
-              <%= link_to ban_status(user), ban_user_path(user), method: :patch, class: "btn btn-sm btn-danger" %>
-              <%= link_to "Delete", user, method: :delete, data: {confirm: "Are you sure"}, class: "btn btn-sm btn-danger" %>
+
+            <% if user.confirmed? == false && user.created_by_invite? == false %>
+              <%= link_to "Resend Confirmation", resend_confirmation_instructions_user_path(user), method: :patch, class: "btn btn-sm btn-outline-success" %>
+            <% end %>
+
+              <%= link_to "Edit", edit_user_path(user), class: "btn btn-sm btn-outline-secondary" %>
+              <%= link_to ban_status(user), ban_user_path(user), method: :patch, class: "btn btn-sm btn-outline-danger" %>
+              <%= link_to "Delete", user, method: :delete, data: {confirm: "Are you sure"}, class: "btn btn-sm btn-outline-danger" %>
           </td>
         </tr>
       <% end %>
+      
     </tbody>
   </table>
 </div>
