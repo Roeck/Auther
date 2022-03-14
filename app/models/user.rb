@@ -29,7 +29,7 @@ class User < ApplicationRecord
 
     # Assign a default role callback as 'student':
     after_create do   
-        self.update(student: true)
+        self.update(admin: true)
     end
 
     def to_s
