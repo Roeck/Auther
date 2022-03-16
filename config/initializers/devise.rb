@@ -320,16 +320,14 @@ Devise.setup do |config|
   # ==> OmniAuth
   # Add a new OmniAuth provider. Check the wiki for more information on setting
   # up on your models and hooks.
-  config.omniauth :github, '7a6fba6286d31e94bbea', 'ebe7d4f638689349857b754719a5cbbe7929d556',
+  config.omniauth :github, Rails.application.credentials[Rails.env.to_sym][:github][:id], Rails.application.credentials[Rails.env.to_sym][:github][:secret],
   scope: 'user'
-  
-  config.omniauth :google_oauth2,
-   '199674420394-v69lt5mf39mustefailpb1c89r48k9sk.apps.googleusercontent.com',
-   'T8b85hsYbYCyQvpSkc_9XTCA'
-  
-  config.omniauth :twitter, 'okpKZj7pC8FMNbSp0jQ34Hcpb', 'jCMvilu7pPB2um5iDfBIfgkfFWxo1PDXSZi7jH02w4tquDjAuw'
 
-  config.omniauth :facebook, '2920826191570223', '9b30b69a7d37754e9189a86c08e2e0ef'
+  config.omniauth :google_oauth2, 
+    Rails.application.credentials.dig(:google_oauth2, :id), 
+    Rails.application.credentials.dig(:google_oauth2, :secret)
+  
+  config.omniauth :twitter, Rails.application.credentials.dig(:twitter, :id), Rails.application.credentials.dig(:twitter, :secret)
 
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or
