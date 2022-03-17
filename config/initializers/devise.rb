@@ -1,3 +1,5 @@
+require_relative '../../.dotfile.rb'
+
 # frozen_string_literal: true
 
 # Assuming you have not yet modified this file, each configuration option below
@@ -323,11 +325,12 @@ Devise.setup do |config|
   # config.omniauth :github, Rails.application.credentials[Rails.env.to_sym][:github][:id], Rails.application.credentials[Rails.env.to_sym][:github][:secret],
   # scope: 'user'
 
-  config.omniauth :google_oauth2, 
-    Rails.application.credentials.dig(:google_oauth2, :id), 
-    Rails.application.credentials.dig(:google_oauth2, :secret)
+  config.omniauth :github, $github_id, $github_key,
+   scope: 'user'
+
+  config.omniauth :google_oauth2, $google_oauth2_id, $google_oauth2_key
   
-  config.omniauth :twitter, Rails.application.credentials.dig(:twitter, :id), Rails.application.credentials.dig(:twitter, :secret)
+  config.omniauth :twitter, $twitter_id, $twitter_key
 
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or
