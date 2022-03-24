@@ -16,7 +16,7 @@ gem 'jbuilder', '~> 2.7'
 
 gem 'bootsnap', '>= 1.4.4', require: false
 gem 'devise', github: "heartcombo/devise", branch: "master"
-gem 'dotenv-rails'
+gem 'figaro'
 
 gem 'omniauth-google-oauth2', '~> 1.0'
 gem 'omniauth-rails_csrf_protection'

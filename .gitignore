@@ -39,4 +39,5 @@
 yarn-debug.log*
 .yarn-integrity
 config/initializers/devise.rb
-.dotfile.rb
+# Ignore application configuration
+/config/credentials.rb

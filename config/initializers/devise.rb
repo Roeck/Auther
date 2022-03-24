@@ -1,4 +1,4 @@
-require_relative '../../.dotfile.rb'
+require_relative '../credentials.rb'
 
 # frozen_string_literal: true
 
