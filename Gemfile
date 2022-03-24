@@ -25,7 +25,7 @@ gem 'omniauth-github'
 
 gem 'omniauth-twitter', '~> 1.4'
 
-gem 'omniauth-facebook'
+# gem 'omniauth-facebook'
 
 gem 'devise_invitable', '~> 2.0', '>= 2.0.5'
 
